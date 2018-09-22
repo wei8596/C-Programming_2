@@ -1,0 +1,155 @@
+【小數點】
+
+#include <iomanip>
+
+cout  <<  fixed <<  setprecision(輸出位數) <<  變數/數字  <<  endl;
+
+
+【最大】
+
+cin>>score[0];
+max = score[0];
+for(int i = 1; i < N; i++){
+	cin>>score[i];
+	if(score[i] > max)
+		max = score[i];
+}
+
+
+【亂數】
+
+#include<cstdlib>
+#include<ctime>
+
+int main(){
+	srand(time(NULL));
+	int s = rand()%6 + 1;
+	
+	return 0;
+}
+
+
+【傳陣列】
+
+void func(int a[]);
+
+func(a);
+
+【陣列搜尋】
+
+int search(const int a[], int n, int target){
+	int index = 0;
+	bool found = false;
+	
+	while((!found) && (index<n)){
+		if(target == a[index])
+			found = true;
+		else
+			index++;
+		if(found)
+			return index;
+		else
+			return -1;
+	}
+}
+
+
+【Sorting】
+
+[Selection sort]
+
+void selectSort(int arr[], int n){
+	int pos_min, temp;
+
+	for (int i=0; i < n-1; i++){
+	    pos_min = i;
+		
+		for (int j=i+1; j < n; j++){
+			if (arr[j] < arr[pos_min])
+                   pos_min = j;	
+		}
+		if (pos_min != i){
+            		temp = arr[i];
+           		arr[i] = arr[pos_min];
+            		arr[pos_min] = temp;
+        	}
+	}
+}
+
+[Insertion sort]
+
+void insertion_sort (int arr[], int length){
+	int j, temp;
+		
+	for (int i = 0; i < length; i++){
+		j = i;
+		
+		while (j > 0 && arr[j] < arr[j-1]){
+			  temp = arr[j];
+			  arr[j] = arr[j-1];
+			  arr[j-1] = temp;
+			  j--;
+		}
+	}
+}
+
+[Bubble sort]
+
+void bubble_sort (int arr[], int n){
+	int temp;
+	
+	for(int i = 0; i < n-1; i++){
+		for(int j = i+1; j < n; j++){
+			if(arr[i] > arr[j]){
+				temp = arr[i];
+				arr[i] = arr[j];
+				arr[j] = temp;
+			}
+		}
+	}
+}
+
+
+
+【Constructor】
+
+
+DayOfYear date1(7, 4), date2(5, 5);  // OK
+
+DayOfYear date1, date2;
+date1.DayOfYear(7, 4); // ILLEGAL!
+date2.DayOfYear(5, 5); // ILLEGAL!
+
+[Definition]
+
+DayOfYear::DayOfYear(int monthValue, int dayValue){  // 1
+	month = monthValue;
+	day = dayValue;
+}
+
+DayOfYear::DayOfYear(int monthValue, int dayValue):month(monthValue), day(dayValue){  // 2	
+}
+
+[Example]
+
+DayOfYear::DayOfYear(int monthValue, int dayValue):month(monthValue), day(dayValue){	
+}
+
+DayOfYear::DayOfYear(int monthValue):month(monthValue), day(1){	
+}
+
+DayOfYear::DayOfYear():month(1), day(1){	
+}
+
+
+
+Object declarations with no "initializers":
+
+DayOfYear date1; // This way!
+DayOfYear date(); // NO! 沒給初始值不用加括號
+
+
+[GET]
+int DayOfYear::getMonthNumber(){
+	return month;
+}
